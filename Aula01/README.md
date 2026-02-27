@@ -4,8 +4,12 @@ A evolução dos sistemas operacionais permitiu que saíssemos de modelos subuti
 
 * **Sistemas Monotarefa:** Suportavam apenas um processo por vez, resultando em subutilização de hardware (CPU, memória e disco).
 
+<img width="794" height="250" alt="image" src="https://github.com/user-attachments/assets/d03bfa77-5d67-4441-b08b-621e5912acb4" />
+
 
 * **Sistemas Multitarefa:** Permitem que o processador suspenda uma tarefa que aguarda dados externos para executar outra.
+
+<img width="892" height="375" alt="image" src="https://github.com/user-attachments/assets/6a3b1d16-9f58-4bfb-b976-d82a7cc544ab" />
 
 
 * **Preempção:** Mecanismo que permite retirar um recurso (como o processador) de uma tarefa para entregá-lo a outra.
@@ -96,6 +100,9 @@ O sistema operacional atua como gestor dos recursos físicos:
 ---
 
 ## 6. Gestores do Sistema Operacional (Resumo)
+
+<img width="1027" height="558" alt="image" src="https://github.com/user-attachments/assets/af012b09-f556-419e-8ac5-7365fe41530c" />
+
 
 O S.O. é composto por softwares específicos para cada função:
 
