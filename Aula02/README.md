@@ -68,39 +68,17 @@ Abaixo, uma tabela comparativa dos sistemas de arquivos mencionados:
 
 | Sistema | Significado | Características Principais |
 | --- | --- | --- |
-| **BFS** | Be File System | Suporta atributos estendidos e indexação tipo banco de dados.
-
- |
-| **EFS** | Encrypting File System | Armazenamento criptografado no NTFS via chave pública.
-
- |
-| **ext2** | 2º Extended FS | Antigo padrão Linux; não possui *journaling*.
-
- |
-| **ext3** | 3º Extended FS | Evolução do ext2 com adição de *journaling*.
-
- |
-| **ext4** | 4º Extended FS | Suporta volumes de até 1 EiB e arquivos de 16 TiB.
-
- |
-| **FAT** | File Allocation Table | Dividido em clusters; versões FAT12, 16 e 32.
-
- |
-| **HFS+** | Hierarchical FS Plus | Desenvolvido pela Apple; utiliza estruturas B-tree.
-
- |
-| **ISO 9660** | - | Padrão para CD-ROMs e DVDs.
-
- |
-| **NTFS** | New Technology FS | Padrão Microsoft Windows; focado em recuperação e nomes longos.
-
- |
-| **procfs** | Process FS | Pseudo sistema de arquivos (não ocupa disco) para informações do kernel.
-
- |
-| **ZFS** | Zettabyte FS | Integra gerenciamento de volumes e verificação de integridade.
-
- |
+| **BFS** | Be File System | Suporta atributos estendidos e indexação tipo banco de dados.|
+| **EFS** | Encrypting File System | Armazenamento criptografado no NTFS via chave pública.|
+| **ext2** | 2º Extended FS | Antigo padrão Linux; não possui *journaling*.|
+| **ext3** | 3º Extended FS | Evolução do ext2 com adição de *journaling*.|
+| **ext4** | 4º Extended FS | Suporta volumes de até 1 EiB e arquivos de 16 TiB.|
+| **FAT** | File Allocation Table | Dividido em clusters; versões FAT12, 16 e 32.|
+| **HFS+** | Hierarchical FS Plus | Desenvolvido pela Apple; utiliza estruturas B-tree.|
+| **ISO 9660** | - | Padrão para CD-ROMs e DVDs.|
+| **NTFS** | New Technology FS | Padrão Microsoft Windows; focado em recuperação e nomes longos.|
+| **procfs** | Process FS | Pseudo sistema de arquivos (não ocupa disco) para informações do kernel.|
+| **ZFS** | Zettabyte FS | Integra gerenciamento de volumes e verificação de integridade.|
 
 ---
 
