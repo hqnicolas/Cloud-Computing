@@ -33,7 +33,8 @@ O sistema operacional utiliza conceitos específicos para organizar a informaç�
 
 
 
-> ![Espaço para Imagem: Ícone de pasta e estrutura de arquivos]
+<img width="172" height="138" alt="image" src="https://github.com/user-attachments/assets/ab77bf04-4e34-4ccf-be6a-46c7807c3513" />
+
 
 ---
 
@@ -56,7 +57,8 @@ Um sistema de arquivos organiza os dados de forma que o SO possa localizá-los r
 
 
 
-> ![Espaço para Imagem: Diagrama da estrutura de disco (MBR, Partições, Superbloco, i-nodes)]
+<img width="943" height="296" alt="image" src="https://github.com/user-attachments/assets/ad908b76-199a-483e-9713-76d10931e953" />
+
 
 ---
 
@@ -128,6 +130,7 @@ O **LVM (Logical Volume Manager)** resolve o problema de redimensionamento de pa
 
 4. Formatar e montar o volume (ex: `mkfs.ext4` e `mount`).
 
+<img width="400" height="229" alt="image" src="https://github.com/user-attachments/assets/e9b52876-d090-42a2-8141-0a164aafef5a" />
 
 
 ---
