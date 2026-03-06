@@ -24,12 +24,10 @@ Para que o armazenamento de longo prazo seja eficiente, três requisitos devem s
 
 O sistema operacional utiliza conceitos específicos para organizar a informação:
 
-* 
-**Arquivo:** Definido como uma sequência de bytes com uma estrutura interna específica e atributos como tamanho, datas de acesso e proprietário.
+* **Arquivo:** Definido como uma sequência de bytes com uma estrutura interna específica e atributos como tamanho, datas de acesso e proprietário.
 
 
-* 
-**Diretório:** Um arquivo especial que mapeia nomes para identificadores, podendo conter subdiretórios em uma estrutura de árvore.
+* **Diretório:** Um arquivo especial que mapeia nomes para identificadores, podendo conter subdiretórios em uma estrutura de árvore.
 
 
 
@@ -44,16 +42,13 @@ Um sistema de arquivos organiza os dados de forma que o SO possa localizá-los r
 
 ### Componentes da Estrutura de Disco
 
-* 
-**MBR (Master Boot Record):** Utilizado para inicializar o computador.
+* **MBR (Master Boot Record):** Utilizado para inicializar o computador.
 
 
-* 
-**Superbloco:** Contém parâmetros-chave do sistema de arquivos e é lido na inicialização.
+* **Superbloco:** Contém parâmetros-chave do sistema de arquivos e é lido na inicialização.
 
 
-* 
-**i-nodes:** Estruturas de dados (uma por arquivo) que contêm todas as informações sobre o arquivo.
+* **i-nodes:** Estruturas de dados (uma por arquivo) que contêm todas as informações sobre o arquivo.
 
 
 
@@ -86,12 +81,9 @@ Abaixo, uma tabela comparativa dos sistemas de arquivos mencionados:
 
 O **LVM (Logical Volume Manager)** resolve o problema de redimensionamento de partições sem a necessidade de interromper o servidor. Ele aloca discos físicos em **volumes lógicos** que podem ser expandidos facilmente.
 
-* 
-**Vantagens:** Redimensionamento flexível, utilização de discos paralelos e criação de *snapshots*.
+* **Vantagens:** Redimensionamento flexível, utilização de discos paralelos e criação de *snapshots*.
 
-
-* 
-**Restrição Importante:** A partição `/boot/` geralmente não deve estar em um grupo de volume lógico porque o gestor de boot pode não conseguir acessá-la.
+* **Restrição Importante:** A partição `/boot/` geralmente não deve estar em um grupo de volume lógico porque o gestor de boot pode não conseguir acessá-la.
 
 
 
