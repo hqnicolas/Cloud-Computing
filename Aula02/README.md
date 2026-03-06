@@ -136,3 +136,6 @@ Para tornar a alteração permanente, deve-se adicionar a seguinte linha ao arqu
 
 `/swapfile none swap sw 0 0`.
 
+<img width="598" height="362" alt="image" src="https://github.com/user-attachments/assets/0785c521-4331-4f57-9d25-17c97019cd33" />
+
+
