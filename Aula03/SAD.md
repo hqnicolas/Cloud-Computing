@@ -1,141 +1,173 @@
-## 1. O que são Sistemas de Arquivos?
+# Cloud Computing: Sistemas de Arquivos Distribuídos (SAD)
 
-Os sistemas de arquivos são uma parte essencial dos sistemas operacionais, fornecendo uma **visão abstrata dos dados persistentes**. Eles são responsáveis pelo serviço de nomes, acesso aos arquivos e sua organização geral.
+---
 
-Enquanto um processo está em execução, ele pode armazenar informações em seu espaço de endereçamento, mas essa capacidade é limitada e os dados são perdidos quando o processo termina. Para solucionar isso, o sistema operacional utiliza a abstração do **arquivo**.
+## 1. Introdução aos SADs
 
-### Requisitos Essenciais para Armazenamento
+Os Sistemas de Arquivos Distribuídos (SADs) permitem o compartilhamento de informações por meio de recursos de hardware e software.
 
-Para que o armazenamento de longo prazo seja eficiente, três requisitos devem ser atendidos:
+> 
+> **Nota:** Quando bem projetado, um SAD oferece acesso a arquivos em um servidor com desempenho e confiabilidade semelhantes aos de arquivos em discos locais.
+> 
+> 
 
-1. Armazenar grandes quantidades de informações.
+---
+
+## 2. Arquitetura Cliente/Servidor
 
 
-2. Permanência dos dados após o término do processo.
+Os sistemas são organizados seguindo o modelo cliente/servidor, apresentando duas abordagens principais:
+
+1. **Modelo de Acesso Remoto:** As requisições são enviadas para acessar o arquivo que permanece no servidor.
 
 
-3. Acesso simultâneo por múltiplos processos.
+2. **Modelo de Carga/Atualização:** O arquivo é transferido para o cliente, os acessos são feitos localmente e, ao concluir, o arquivo (novo) é retornado ao servidor.
 
 
 
 ---
 
-## 2. Abstrações: Arquivos e Diretórios
+## 3. Características Importantes
 
-O sistema operacional utiliza conceitos específicos para organizar a informação:
-
-* **Arquivo:** Definido como uma sequência de bytes com uma estrutura interna específica e atributos como tamanho, datas de acesso e proprietário.
+* Clientes remotos acessando arquivos em servidores distintos.
 
 
-* **Diretório:** Um arquivo especial que mapeia nomes para identificadores, podendo conter subdiretórios em uma estrutura de árvore.
+* Esquema de compartilhamento bem estruturado.
 
 
+* Clientes dispersos geograficamente.
 
-<img width="172" height="138" alt="image" src="https://github.com/user-attachments/assets/ab77bf04-4e34-4ccf-be6a-46c7807c3513" />
+
+* Ponto de vista centralizado para o usuário.
+
 
 
 ---
 
-## 3. Estrutura e Organização do Disco
+## 4. Por que utilizar um SAD?
 
-Um sistema de arquivos organiza os dados de forma que o SO possa localizá-los rapidamente através de um **índice**. O processo de dividir um dispositivo em seções é chamado de **particionamento**, e a aplicação de um sistema de arquivos a essa partição é a **formatação**.
+A necessidade de um SAD surge principalmente para resolver o **compartilhamento de recursos**:
 
-### Componentes da Estrutura de Disco
-
-* **MBR (Master Boot Record):** Utilizado para inicializar o computador.
+* **Espaço em disco:** Evita que cada máquina precise armazenar localmente todos os arquivos que acessa.
 
 
-* **Superbloco:** Contém parâmetros-chave do sistema de arquivos e é lido na inicialização.
+* **Administração:** Facilita processos de backup e gerência centralizada.
 
 
-* **i-nodes:** Estruturas de dados (uma por arquivo) que contêm todas as informações sobre o arquivo.
+* **Acesso:** Permite acessar arquivos particulares de diferentes computadores.
 
-
-
-<img width="943" height="296" alt="image" src="https://github.com/user-attachments/assets/ad908b76-199a-483e-9713-76d10931e953" />
 
 
 ---
 
-## 4. Principais Sistemas de Arquivos
+## 5. Funcionalidades e Interfaces
 
-Abaixo, uma tabela comparativa dos sistemas de arquivos mencionados:
+O SAD provê acesso aos dados através de interfaces que permitem:
 
-| Sistema | Significado | Características Principais |
-| --- | --- | --- |
-| **BFS** | Be File System | Suporta atributos estendidos e indexação tipo banco de dados.|
-| **EFS** | Encrypting File System | Armazenamento criptografado no NTFS via chave pública.|
-| **ext2** | 2º Extended FS | Antigo padrão Linux; não possui *journaling*.|
-| **ext3** | 3º Extended FS | Evolução do ext2 com adição de *journaling*.|
-| **ext4** | 4º Extended FS | Suporta volumes de até 1 EiB e arquivos de 16 TiB.|
-| **FAT** | File Allocation Table | Dividido em clusters; versões FAT12, 16 e 32.|
-| **HFS+** | Hierarchical FS Plus | Desenvolvido pela Apple; utiliza estruturas B-tree.|
-| **ISO 9660** | - | Padrão para CD-ROMs e DVDs.|
-| **NTFS** | New Technology FS | Padrão Microsoft Windows; focado em recuperação e nomes longos.|
-| **procfs** | Process FS | Pseudo sistema de arquivos (não ocupa disco) para informações do kernel.|
-| **ZFS** | Zettabyte FS | Integra gerenciamento de volumes e verificação de integridade.|
-
----
-
-## 5. Gerenciamento de Volumes Lógicos (LVM)
-
-O **LVM (Logical Volume Manager)** resolve o problema de redimensionamento de partições sem a necessidade de interromper o servidor. Ele aloca discos físicos em **volumes lógicos** que podem ser expandidos facilmente.
-
-* **Vantagens:** Redimensionamento flexível, utilização de discos paralelos e criação de *snapshots*.
-
-* **Restrição Importante:** A partição `/boot/` geralmente não deve estar em um grupo de volume lógico porque o gestor de boot pode não conseguir acessá-la.
+* Abrir, fechar e checar o estado de arquivos.
 
 
-
-### Etapas para Configuração LVM
-
-1. Criar o **Volume Físico (PV)** com `pvcreate`.
+* Ler e escrever dados.
 
 
-2. Criar o **Grupo de Volume (VG)** com `vgcreate`.
+* Bloquear arquivos ou partes deles (concorrência).
 
 
-3. Criar o **Volume Lógico (LV)** com `lvcreate`.
+* Listar diretórios.
 
 
-4. Formatar e montar o volume (ex: `mkfs.ext4` e `mount`).
+* Apagar e renomear arquivos ou diretórios.
 
-<img width="400" height="229" alt="image" src="https://github.com/user-attachments/assets/e9b52876-d090-42a2-8141-0a164aafef5a" />
 
 
 ---
 
-## 6. Memória SWAP (Espaço de Troca)
+## 6. Requisitos de Suporte
 
-A **SWAP** é uma parte do disco rígido utilizada como RAM virtual quando a memória física está cheia.
+* **Transparência:** O arquivo deve ser acessado de forma transparente em qualquer nó, independentemente da localização.
 
-### Configuração de Arquivo SWAP no Linux
 
-Para criar e ativar um arquivo de swap de 1GB:
-
-```bash
-# Criar o arquivo de 1GB
-sudo fallocate -l 1G /swapfile
-
-# Ajustar permissões
-sudo chmod 600 /swapfile
-
-# Formatar como swap e ativar
-sudo mkswap /swapfile
-sudo swapon /swapfile
-
-# Verificar status
-sudo swapon -s
-
-```
+* **Mobilidade do Usuário:** Flexibilidade para o usuário trabalhar em diferentes nós em momentos distintos.
 
 
 
-Para tornar a alteração permanente, deve-se adicionar a seguinte linha ao arquivo `/etc/fstab`:
+---
+
+## 7. Formas de Armazenamento
+
+Existem duas formas principais de organizar o armazenamento:
+
+1. **Centralizado:** O sistema de arquivo inteiro fica em um único servidor.
 
 
-`/swapfile none swap sw 0 0`.
-
-<img width="598" height="362" alt="image" src="https://github.com/user-attachments/assets/0785c521-4331-4f57-9d25-17c97019cd33" />
+2. **Distribuído (Master/Slave):** Arquivos distribuídos em vários discos de diferentes computadores.
 
 
+
+---
+
+## 8. Serviços Ofertados
+
+* **Serviço de Nomes:** Indica a localização do arquivo dado seu nome ou caminho.
+
+
+* **Serviço de Arquivo:** Fornece as operações sobre os arquivos (leitura, escrita, etc.).
+
+
+* **Serviço de Diretórios:** Mantém a organização hierárquica (diretórios e subdiretórios).
+
+
+
+---
+
+## 9. Atributos de Qualidade do SAD
+
+Para ser eficiente, um SAD busca as seguintes características:
+
+| Característica | Descrição |
+| --- | --- |
+| **Tolerância a Falhas** | O sistema não pode perder informações ou ficar indisponível se um servidor cair. |
+| **Acesso Concorrente** | Vários usuários acessando o mesmo arquivo sem perda de performance ou danos. |
+| **Replicação** | Aumenta a confiança e eficiência do serviço. |
+| **Escalabilidade** | Capacidade de prever o crescimento de nós e usuários. |
+| **Segurança** | Controle de acesso e autenticação de clientes. |
+| **Consistência** | Todas as cópias devem agir como se fossem uma única. |
+
+---
+
+## 10. Exemplo: Network File System (NFS)
+
+O NFS é um exemplo clássico de SAD com arquitetura cliente-servidor, muito popular em sistemas Unix.
+
+* **Visão Padronizada:** O servidor fornece uma visão padronizada do seu sistema local.
+
+
+* **VFS:** Utiliza um Sistema de Arquivo Virtual (Virtual File System).
+
+
+* **RPC:** As requisições ao servidor são feitas via *Remote Procedure Call*.
+
+
+
+---
+
+## 11. SAD Baseados em Cluster
+
+Utilizados frequentemente para computação paralela:
+
+* **File Stripping:** Arquivos divididos em "tiras" através dos servidores para aumentar a performance.
+
+
+* **Efetividade:** Funciona bem para dados estruturados e regulares; menos efetivo para dados irregulares de uso geral.
+
+
+
+---
+
+## 12. Exemplos de SAD no Mercado
+
+Alguns dos principais sistemas utilizados incluem:
+
+* GFS (Google FileSystem) e Hadoop (HDFS).
+* GlusterFS, Ceph e Lustre.
+* AFS (Andrew FileSystem) e CODA.
