@@ -1,5 +1,3 @@
----
-
 #  Guia de Implementação: Cluster GlusterFS e Configuração de Rede
 
 Este guia orienta a configuração de uma matriz de armazenamento em cluster redundante (Trusted Storage Pool) usando GlusterFS e a configuração de rede de servidores Linux.
