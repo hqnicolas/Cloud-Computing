@@ -1,141 +1,89 @@
-## 1. O que são Sistemas de Arquivos?
+GlusterFS: Sistema de Arquivos Distribuído e Escalável 
 
-Os sistemas de arquivos são uma parte essencial dos sistemas operacionais, fornecendo uma **visão abstrata dos dados persistentes**. Eles são responsáveis pelo serviço de nomes, acesso aos arquivos e sua organização geral.
-
-Enquanto um processo está em execução, ele pode armazenar informações em seu espaço de endereçamento, mas essa capacidade é limitada e os dados são perdidos quando o processo termina. Para solucionar isso, o sistema operacional utiliza a abstração do **arquivo**.
-
-### Requisitos Essenciais para Armazenamento
-
-Para que o armazenamento de longo prazo seja eficiente, três requisitos devem ser atendidos:
-
-1. Armazenar grandes quantidades de informações.
-
-
-2. Permanência dos dados após o término do processo.
-
-
-3. Acesso simultâneo por múltiplos processos.
-
-
+O **GlusterFS** é uma solução robusta para o gerenciamento de armazenamento em grande escala. Sendo uma alternativa poderosa e de **código aberto**, ele é ideal para ambientes que exigem alta disponibilidade e escalabilidade. Esta apresentação detalha como ele atende às crescentes demandas de dados corporativos.
 
 ---
 
-## 2. Abstrações: Arquivos e Diretórios
+1. O que é GlusterFS? 
 
-O sistema operacional utiliza conceitos específicos para organizar a informação:
+É um sistema de arquivos distribuído *open source* projetado para suportar:
 
-* **Arquivo:** Definido como uma sequência de bytes com uma estrutura interna específica e atributos como tamanho, datas de acesso e proprietário.
-
-
-* **Diretório:** Um arquivo especial que mapeia nomes para identificadores, podendo conter subdiretórios em uma estrutura de árvore.
+* **Vários petabytes** de armazenamento.
 
 
-
-<img width="172" height="138" alt="image" src="https://github.com/user-attachments/assets/ab77bf04-4e34-4ccf-be6a-46c7807c3513" />
-
-
----
-
-## 3. Estrutura e Organização do Disco
-
-Um sistema de arquivos organiza os dados de forma que o SO possa localizá-los rapidamente através de um **índice**. O processo de dividir um dispositivo em seções é chamado de **particionamento**, e a aplicação de um sistema de arquivos a essa partição é a **formatação**.
-
-### Componentes da Estrutura de Disco
-
-* **MBR (Master Boot Record):** Utilizado para inicializar o computador.
+* **Milhares de clientes** conectados de forma simultânea.
 
 
-* **Superbloco:** Contém parâmetros-chave do sistema de arquivos e é lido na inicialização.
-
-
-* **i-nodes:** Estruturas de dados (uma por arquivo) que contêm todas as informações sobre o arquivo.
+* Demandas crescentes **sem perda de desempenho**.
 
 
 
-<img width="943" height="296" alt="image" src="https://github.com/user-attachments/assets/ad908b76-199a-483e-9713-76d10931e953" />
+Sua função principal é agregar recursos de armazenamento de múltiplos servidores em um único **namespace global**, eliminando a necessidade de um servidor central de metadados.
 
+> **[INSERIR IMAGEM: Diagrama de Topologia de Rede e Servidores (Página 2)]**
 
 ---
 
-## 4. Principais Sistemas de Arquivos
+2. Arquitetura e Conceitos-Chave 
 
-Abaixo, uma tabela comparativa dos sistemas de arquivos mencionados:
+A arquitetura do GlusterFS foca na eliminação de gargalos tradicionais:
 
-| Sistema | Significado | Características Principais |
-| --- | --- | --- |
-| **BFS** | Be File System | Suporta atributos estendidos e indexação tipo banco de dados.|
-| **EFS** | Encrypting File System | Armazenamento criptografado no NTFS via chave pública.|
-| **ext2** | 2º Extended FS | Antigo padrão Linux; não possui *journaling*.|
-| **ext3** | 3º Extended FS | Evolução do ext2 com adição de *journaling*.|
-| **ext4** | 4º Extended FS | Suporta volumes de até 1 EiB e arquivos de 16 TiB.|
-| **FAT** | File Allocation Table | Dividido em clusters; versões FAT12, 16 e 32.|
-| **HFS+** | Hierarchical FS Plus | Desenvolvido pela Apple; utiliza estruturas B-tree.|
-| **ISO 9660** | - | Padrão para CD-ROMs e DVDs.|
-| **NTFS** | New Technology FS | Padrão Microsoft Windows; focado em recuperação e nomes longos.|
-| **procfs** | Process FS | Pseudo sistema de arquivos (não ocupa disco) para informações do kernel.|
-| **ZFS** | Zettabyte FS | Integra gerenciamento de volumes e verificação de integridade.|
+* **Bricks:** São as unidades básicas de armazenamento, representando diretórios exportados em servidores individuais que contribuem para a capacidade do volume.
 
----
 
-## 5. Gerenciamento de Volumes Lógicos (LVM)
+* **Volumes:** Coleções lógicas de *bricks* configuráveis em modos: distribuído, replicado, disperso ou híbrido.
 
-O **LVM (Logical Volume Manager)** resolve o problema de redimensionamento de partições sem a necessidade de interromper o servidor. Ele aloca discos físicos em **volumes lógicos** que podem ser expandidos facilmente.
 
-* **Vantagens:** Redimensionamento flexível, utilização de discos paralelos e criação de *snapshots*.
+* **Acesso:** Compatível com múltiplos protocolos como **NFS, SMB/CIFS** e cliente nativo, facilitando a integração com Windows, Linux e Unix.
 
-* **Restrição Importante:** A partição `/boot/` geralmente não deve estar em um grupo de volume lógico porque o gestor de boot pode não conseguir acessá-la.
+
+* **Escalabilidade Linear:** Utiliza um algoritmo de *hash* para localizar dados, dispensando consultas centralizadas e evitando gargalos comuns em sistemas distribuídos.
 
 
 
-### Etapas para Configuração LVM
-
-1. Criar o **Volume Físico (PV)** com `pvcreate`.
-
-
-2. Criar o **Grupo de Volume (VG)** com `vgcreate`.
-
-
-3. Criar o **Volume Lógico (LV)** com `lvcreate`.
-
-
-4. Formatar e montar o volume (ex: `mkfs.ext4` e `mount`).
-
-<img width="400" height="229" alt="image" src="https://github.com/user-attachments/assets/e9b52876-d090-42a2-8141-0a164aafef5a" />
-
+> **[INSERIR IMAGEM: Diagrama de Arquitetura de Clientes e Trusted Storage Pool (Página 3)]**
 
 ---
 
-## 6. Memória SWAP (Espaço de Troca)
+3. Vantagens e Casos de Uso 
 
-A **SWAP** é uma parte do disco rígido utilizada como RAM virtual quando a memória física está cheia.
+O GlusterFS se destaca pela agilidade e economia:
 
-### Configuração de Arquivo SWAP no Linux
+* **Escalabilidade Rápida:** Novos nós de armazenamento podem ser adicionados em minutos, sem interrupções.
 
-Para criar e ativar um arquivo de swap de 1GB:
 
-```bash
-# Criar o arquivo de 1GB
-sudo fallocate -l 1G /swapfile
+* **Alta Disponibilidade:** Possui replicação automática e utiliza **volumes arbiter** para evitar o problema de *"split brain"* em falhas de rede.
 
-# Ajustar permissões
-sudo chmod 600 /swapfile
 
-# Formatar como swap e ativar
-sudo mkswap /swapfile
-sudo swapon /swapfile
-
-# Verificar status
-sudo swapon -s
-
-```
+* **Custo-Benefício:** Roda em **hardware comum (commodity)**, eliminando gastos com soluções proprietárias.
 
 
 
-Para tornar a alteração permanente, deve-se adicionar a seguinte linha ao arquivo `/etc/fstab`:
+### Setores que utilizam a tecnologia:
+
+| Setor | Aplicação  |
+| --- | --- |
+| **Mídia** | Armazenamento de grandes arquivos audiovisuais. |
+| **Saúde** | Arquivamento de imagens médicas. |
+| **Governo** | Registros públicos e documentos. |
+| **Educação** | Repositórios de pesquisa. |
+| **Finanças** | Backups e compliance. |
+
+---
+
+4. Por que escolher o GlusterFS? 
+
+* **Flexibilidade:** Funciona em ambientes locais (on-premise), nuvem pública, privada ou híbrida.
 
 
-`/swapfile none swap sw 0 0`.
-
-<img width="598" height="362" alt="image" src="https://github.com/user-attachments/assets/0785c521-4331-4f57-9d25-17c97019cd33" />
+* **Independência de Fornecedor:** Reduz o Custo Total de Propriedade (TCO) em até **50%** comparado a soluções tradicionais.
 
 
+* **Adaptabilidade:** Personalizável para arquivos pequenos ou grandes, acesso sequencial ou aleatório, com suporte a *multi-tenancy*.
+
+
+* **Evolução Constante:** Comunidade ativa e otimizações recentes voltadas para **contêineres e virtualização**.
+
+
+
+> **[INSERIR IMAGEM: Mãos operando servidor/tablet (Página 5)]**
