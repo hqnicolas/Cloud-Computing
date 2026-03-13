@@ -20,7 +20,6 @@ O **GlusterFS** é uma solução robusta para o gerenciamento de armazenamento e
 
 Sua função principal é agregar recursos de armazenamento de múltiplos servidores em um único **namespace global**, eliminando a necessidade de um servidor central de metadados.
 
-> **[INSERIR IMAGEM: Diagrama de Topologia de Rede e Servidores (Página 2)]**
 
 ---
 
@@ -38,10 +37,6 @@ A arquitetura do GlusterFS foca na eliminação de gargalos tradicionais:
 
 
 * **Escalabilidade Linear:** Utiliza um algoritmo de *hash* para localizar dados, dispensando consultas centralizadas e evitando gargalos comuns em sistemas distribuídos.
-
-
-
-> **[INSERIR IMAGEM: Diagrama de Arquitetura de Clientes e Trusted Storage Pool (Página 3)]**
 
 ---
 
@@ -84,6 +79,3 @@ O GlusterFS se destaca pela agilidade e economia:
 
 * **Evolução Constante:** Comunidade ativa e otimizações recentes voltadas para **contêineres e virtualização**.
 
-
-
-> **[INSERIR IMAGEM: Mãos operando servidor/tablet (Página 5)]**
