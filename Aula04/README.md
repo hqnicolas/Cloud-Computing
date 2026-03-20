@@ -46,7 +46,9 @@
 * **RPOs (Objetivos de Ponto de Recuperação):** Limitam o período de volta no tempo e definem a quantidade máxima permitida de dados perdidos em uma ocorrência de falha (desde o último backup válido). 
 * **RTOs (Objetivo de Tempo de Recuperação):** Representam a quantidade de tempo que leva para se recuperar de um incidente até que as operações estejam novamente disponíveis para os usuários (período inativo do usuário). 
 
-> *[Espaço reservado para a imagem da página 10: Gráfico ilustrando a linha do tempo de Last backup, Failure, Recovered data, Recovery Point e Recovery Time]* 
+<img width="605" height="184" alt="image" src="https://github.com/user-attachments/assets/b06067c5-f097-4c8f-8e6b-42d93a53e847" />
+
+ Gráfico ilustrando a linha do tempo de Last backup, Failure, Recovered data, Recovery Point e Recovery Time
 
 ---
 
@@ -62,7 +64,10 @@
 * **Servidores On-premise:** Sua cota de quantidade de solicitações, downstream e upstream dependem exclusivamente da capacidade de infraestrutura local. 
 * **Servidores Cloud:** Sua cota vai depender do plano contratado.  Esses parâmetros podem ser acrescidos de acordo com a demanda; porém, à medida que a empresa cresce, o custo do cloud computing acaba sendo equivalente ao de montar uma infraestrutura própria. 
 
-> *[Espaço reservado para a imagem da página 13: Imagens detalhando níveis de uso gratuito, limites e cotas de recursos da AWS]* 
+<img width="538" height="458" alt="image" src="https://github.com/user-attachments/assets/b8dcd91e-5497-44ef-b724-93cb79620994" />
+
+
+ Imagens detalhando níveis de uso gratuito, limites e cotas de recursos da AWS
 
 ---
 
