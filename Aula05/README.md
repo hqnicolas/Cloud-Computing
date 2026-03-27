@@ -2,6 +2,9 @@
 
 O **GlusterFS** é uma solução robusta para o gerenciamento de armazenamento em larga escala. Sendo de código aberto, ele se apresenta como uma alternativa poderosa para ambientes que exigem **alta disponibilidade** e **escalabilidade**. O sistema foi projetado para responder às crescentes demandas de dados em implementações empresariais.
 
+<img width="983" height="768" alt="image" src="https://github.com/user-attachments/assets/4d3e4aa2-4408-4961-8278-88decfdf2543" />
+
+
 ---
 
 ## O que é o GlusterFS?
