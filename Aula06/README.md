@@ -20,6 +20,9 @@ Fazem parte dos requisitos mínimos deste documento a avaliação de:
 - Prevenção de incêndio
 - Cabeamento estruturado
 
+<img width="756" height="714" alt="image" src="https://github.com/user-attachments/assets/2b4179c0-14ea-4d52-9189-c62afa856784" />
+
+
 ---
 
 ### TIA-942 – Faz Referência
@@ -38,6 +41,9 @@ Fazem parte dos requisitos mínimos deste documento a avaliação de:
 - Telcordia GR-63-CORE: Requirements, physical protection.
 - Telcordia GR-139-CORE: General Requirements for central office coaxial cable.
 
+<img width="894" height="618" alt="image" src="https://github.com/user-attachments/assets/e95a23db-cdde-4d7a-b598-103be7037150" />
+
+
 ---
 
 ### TIA-942 - Topologia Básica
@@ -49,6 +55,9 @@ d) Conexão cruzada principal (MC) na área de distribuição principal;
 e) Conexão cruzada horizontal (HC) na sala de telecomunicações, área de distribuição horizontal ou principal área de distribuição;
 f) Saída da zona ou ponto de consolidação na área de distribuição da zona;
 g) Tomada na área de distribuição de equipamentos.
+
+<img width="841" height="562" alt="image" src="https://github.com/user-attachments/assets/606b283e-74bb-4897-902c-36d25c5c85f3" />
+
 
 ---
 
@@ -76,6 +85,9 @@ g) Tomada na área de distribuição de equipamentos.
 
 **SALA DE TELECOMUNICAÇÕES (TR)**
 Suporta o cabeamento para as áreas externas à sala de computadores, localizada fora dela.
+
+<img width="720" height="563" alt="image" src="https://github.com/user-attachments/assets/d302dc87-ce12-47d8-bf44-0527d7b1279d" />
+
 
 **MDA (Main Distribution Area)**
 - Inclui o "Cross-Connect" principal (ponto central de distribuição).
@@ -121,6 +133,9 @@ Sem equipamentos ativos; no máximo caixas de proteção de fusões ópticas.
 - Pode receber switches SAN/NAS.
 - Racks de servidores (DELL, HP, IBM) e ativos como IBM AS400, EMC Storage.
 - Racks de cabeamento para espelho das conexões de ativos.
+
+<img width="958" height="553" alt="image" src="https://github.com/user-attachments/assets/874aa942-1564-43cd-92ca-7763c5e1f219" />
+
 
 ---
 
@@ -173,6 +188,9 @@ Sem equipamentos ativos; no máximo caixas de proteção de fusões ópticas.
 - Variação máxima: 5 ºC por hora.
 - Ar-condicionado conectado a gerador, funcionando 24/365.
 
+<img width="503" height="302" alt="image" src="https://github.com/user-attachments/assets/21641e55-dae2-4680-85a5-32d09e24271b" />
+
+
 **Energia:**
 - Circuitos de alimentação de ativos exclusivos e redundantes (no-break, gerador).
 - Tomadas de serviço independentes: uma a cada 3,65 m nas paredes.
@@ -186,6 +204,9 @@ Sem equipamentos ativos; no máximo caixas de proteção de fusões ópticas.
 - Regular pressão do ar frio conforme a geração de calor dos racks.
 - Utilizar painéis fechados em espaços não usados nos racks.
 - Conceito “dark data center”.
+
+  <img width="1036" height="570" alt="image" src="https://github.com/user-attachments/assets/1e829f8e-2f3c-4048-814d-dcdea340954a" />
+
 
 ---
 
@@ -230,5 +251,7 @@ A classificação considera 4 níveis para arquitetura, telecomunicações, elé
 - Disponibilidade elétrica 2(N+1) com duas fontes de energia pública de diferentes subestações.
 - HVAC com múltiplas unidades redundantes e fontes de energia distintas.
 - Downtime permitido: até 0,4 horas anuais.
+
+<img width="1117" height="726" alt="image" src="https://github.com/user-attachments/assets/cc0c711e-8a25-4219-afbf-b54144e6bd47" />
 
 **Nota final:** A classificação do Data Center é determinada pelo menor nível atingido entre as áreas avaliadas.
