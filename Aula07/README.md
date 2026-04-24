@@ -24,6 +24,8 @@ O **Dynamic Host Configuration Protocol (DHCP)** é um protocolo de rede que aut
 3.  **DHCP Request:** O cliente aceita a oferta e solicita formalmente o uso do endereço IP proposto.
 4.  **DHCP ACK:** O servidor confirma a atribuição e o cliente utiliza o IP por um tempo determinado (**lease**).
 
+<img width="1118" height="468" alt="image" src="https://github.com/user-attachments/assets/73a77fb2-40dc-41b6-8b08-8e219bb1e32a" />
+
 ---
 
 ## O que é VLAN?
@@ -39,6 +41,9 @@ A integração entre essas tecnologias apresenta um obstáculo:
 2.  **VLANs isolam broadcasts:** Por design, broadcasts não atravessam diferentes VLANs.
 3.  **Problema:** Se o servidor e o cliente estiverem em VLANs diferentes, o cliente não recebe o IP.
 4.  **Soluções:** Uso de **DHCP Relay Agents (IP Helper)** ou servidores DHCP dedicados em cada VLAN.
+
+<img width="873" height="425" alt="image" src="https://github.com/user-attachments/assets/2e910f75-3344-41b6-92c2-e8435f8cc637" />
+
 
 ---
 
@@ -60,6 +65,9 @@ Na AWS, o **Virtual Private Cloud (VPC)** representa sua rede virtual isolada. D
 2.  **Atribuição:** IPs são atribuídos dentro do range CIDR definido para a subnet.
 3.  **DNS Padrão:** O DNS configurado é o **AmazonProvidedDNS (169.254.169.253)**.
 4.  **Customização:** Alterações são feitas via DHCP Option Sets personalizados.
+
+<img width="1271" height="804" alt="image" src="https://github.com/user-attachments/assets/09111bdb-6113-4f4a-a22f-567b72375fc8" />
+
 
 ---
 
@@ -87,6 +95,9 @@ Como as VLANs tradicionais não funcionam na VPC, a segmentação é implementad
 2.  **Criar Option Set:** Via console ou CLI.
 3.  **Associar à VPC:** Substituir as configurações padrão.
 4.  **Validar:** Usar o Amazon Route 53 Resolver para resolução privada.
+
+<img width="635" height="713" alt="image" src="https://github.com/user-attachments/assets/9cd550b4-eefe-454d-b394-3d5a1e1e113c" />
+
 
 > **Exemplo de comando CLI:**
 > `aws ec2 create-dhcp-options --dhcp-configurations Key=domain-name,Values=empresa.local Key=domain-name-servers,Values=10.0.0.10,10.0.0.11`
