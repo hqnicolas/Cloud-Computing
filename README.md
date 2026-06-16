@@ -12,5 +12,6 @@ Repositório de "Olá mundo" de Cloud Computing
 - [Aula07](/Aula07) DHCP e VLAN na Nuvem: Conceitos e Aplicações Práticas
 - [Aula08](/Aula08) Gestão de Data Center: Medida, Métrica e Indicador
 - [Aula09](/Aula09) Gestão de Data Center: Métricas Avançadas e Monitoramento Eficaz
+- [Aula10](/Aula10) Plataformas de Nuvem: Open Stack
 
 ---
