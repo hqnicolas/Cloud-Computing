@@ -13,5 +13,6 @@ Repositório de "Olá mundo" de Cloud Computing
 - [Aula08](/Aula08) Gestão de Data Center: Medida, Métrica e Indicador
 - [Aula09](/Aula09) Gestão de Data Center: Métricas Avançadas e Monitoramento Eficaz
 - [Aula10](/Aula10) Plataformas de Nuvem: Open Stack
-
+- [Aula11](/Aula11) Containers: Revolução na Virtualização 
+- [Aula12](/Aula12) Virtualização Desempenho e Benchmarks
 ---
